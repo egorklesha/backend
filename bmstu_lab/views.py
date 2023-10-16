@@ -88,22 +88,11 @@ def Get_rent_calculation(request, id):
 def Filter(request):
     # Преобразовать ключевое слово в строку для поиска в базе данных
     filter_keyword = str(request.GET.get('filter_keyword'))
-    field_name = request.GET.get('field_name')
 
-    filtered_objects = None
-
-    if field_name == 'type':
-        filtered_objects = [obj for obj in database if filter_keyword.lower() in obj['type'].lower()]
-    elif field_name == 'feature':
-        filtered_objects = [obj for obj in database if filter_keyword.lower() in obj['feature'].lower()]
-    elif field_name == 'describe':
-        filtered_objects = [obj for obj in database if filter_keyword.lower() in obj['describe'].lower()]
-    else:
-        pass
+    filtered_objects = [obj for obj in database if filter_keyword.lower() in obj['feature'].lower()]
 
     if filtered_objects == []:
         raise Http404("Объект не найден")
-
 
     response = {'data': filtered_objects[0]}
 
