@@ -1,0 +1,31 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css");
+
+.header {
+    display: flex;
+    justify-content: center;
+}
+
+.input-search {
+    margin: 20px;
+    border-style: none;
+    font-size: 20px;
+    background-color: #000000;
+    color: #fff;
+}
+
+.input-search::placeholder {
+    color: rgb(191, 255, 0);
+    font-size: 20px;
+}
+
+.filter-field {
+    margin: 20px;
+    border-style: none;
+    font-size: 20px;
+    background-color: #000000;
+    color: #fff;
+}
+
+
+
+

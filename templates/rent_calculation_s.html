@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block name %} Список {% endblock %}
+
+{% block content %}
+
+    <link rel="stylesheet" type="text/css" href="{% static '/css/card_item.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/search_button.css' %}">
+
+    <div class="header">
+    <div class="search-box">
+        <form method="GET" action="{% url 'filter' %}">
+            <label>
+                <select name="field_name" class="filter-field">
+                    <option value="feature">Название</option>
+                </select>
+            </label>
+            <label>
+                <input class="input-search" type="text" name="filter_keyword" placeholder="Поиск ... ">
+            </label>
+        </form>
+    </div>
+    </div>
+
+    <div class="grid-container">
+        {% for rent_calculation in data %}
+            <div class="container-item">
+                <div class="wrapper">
+                    <img src="{{ rent_calculation.url_photo }}" alt="">
+                    <p> {{ rent_calculation.feature }} </p>
+                </div>
+                <div class="button-wrapper">
+                    <a href="{% url 'about_rent_calculation' rent_calculation.id %}">
+                        <button class="btn fill" href="{% url 'about_rent_calculation' rent_calculation.id %}">
+                            Посмотреть
+                        </button>
+                    </a>
+                </div>
+            </div>
+        {% empty %}
+            <p>Список пуст</p>
+        {% endfor %}
+    </div>
+{% endblock %}

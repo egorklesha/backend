@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,100&family=Roboto+Slab&display=swap');
+
+html{
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(149deg, rgba(24,187,156,1) 0%, rgba(106,57,175,1) 42%, rgba(187,24,148,1) 72%, rgba(115,53,134,1) 100%);
+    animation: gradient 10s infinite linear;
+    background-size: 400%;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 80% 0%;
+    }
+    50% {
+        background-position: 20% 100%;
+    }
+    100% {
+        background-position: 80% 0%;
+    }
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Это создаст гибкую сетку с колонками шириной 200px и автоматически адаптирующимися к размеру контейнера */
+    gap: 30px; /* Расстояние между элементами сетки */
+}
+
+.container-item {
+    background-color: rgba(147, 147, 147, 0.25);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.container-item-2 {
+    background-color: rgba(147, 147, 147, 0.25);
+    padding: 20px;
+    margin: 20px 200px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.container-item img {
+    width: 100%;
+    height: auto;
+}
+
+.btn {
+    border: none;
+    padding: 12px 24px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.fill {
+    background: rgba(0, 0, 0, 0.9);
+    color: rgb(191, 255, 0);
+    font-weight: bold;
+}
+
+.wrapper {
+    height: 100%;
+    width: 100%;
+}
+
+p{
+    color: white;
+}
+
+
