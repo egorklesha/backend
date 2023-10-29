@@ -39,7 +39,7 @@ database = [
         'feature': 'Водоотведение',
         'type': 'м3',
         'describe': 'это — коммунальная услуга приема, транспортировки и очистки сточных вод. Использованная в квартирах вода через канализацию попадает в очистные сооружения, где ее прогоняют через систему фильтров и утилизируют (чаще всего сливают в реку).',
-        'url_photo': 'https://gymnasia2.ru/wp-content/uploads/2/2/7/2278061f065487b4cab63fe697126816.jpeg',
+        'url_photo': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeCfAh7gjyeg_7nx2GzC8X8STpfGFYZoagmQ&usqp=CAU',
         'status': True
     },
     {

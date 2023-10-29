@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,100&family=Roboto+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@700&display=swap');
 
 html{
     height: 100%;
@@ -10,14 +10,18 @@ html{
 
 @keyframes gradient {
     0% {
-        background-position: 80% 0%;
+        background-position: 80% 0;
     }
     50% {
         background-position: 20% 100%;
     }
     100% {
-        background-position: 80% 0%;
+        background-position: 80% 0;
     }
+}
+
+.boby {
+    font-family: 'Anonymous Pro', monospace;
 }
 
 .grid-container {
@@ -66,8 +70,14 @@ html{
     width: 100%;
 }
 
+h1 {
+    font-family: 'Anonymous Pro', monospace;
+}
+
 p{
+    font-family: 'Anonymous Pro', monospace;
     color: white;
 }
+
 
 
