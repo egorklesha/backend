@@ -60,17 +60,26 @@ database = [
     }
 ]
 
+# Фильтрация
+def RentsListPage(request):
+    # Преобразовать ключевое слово в строку для поиска в базе данных
+    filter_keyword = request.GET.get('filter_keyword', '')
 
-# Список
-def Get_rent_calculation_s(request):
-    response = {'data': database}
-    return render(request, 'rent_calculation_s.html', response)
+    filtered_objects = [obj for obj in database if filter_keyword.lower() in obj['feature'].lower()]
+
+    response = {
+        'data': filtered_objects,
+        "filter_keyword": filter_keyword
+    }
+
+    return render(request, 'rents_list.html', response)
 
 
 # Информация
-def Get_rent_calculation(request, id):
+def RentDetailsPage(request, id):
     # Найдем объект в списке по 'id'
     rent_calculation = None
+
     for obj in database:
         if obj['id'] == id:
             rent_calculation = obj
@@ -81,19 +90,4 @@ def Get_rent_calculation(request, id):
 
     response = {'data': rent_calculation}
 
-    return render(request, 'rent_calculation.html', response)
-
-
-# Фильтрация
-def Filter(request):
-    # Преобразовать ключевое слово в строку для поиска в базе данных
-    filter_keyword = str(request.GET.get('filter_keyword'))
-
-    filtered_objects = [obj for obj in database if filter_keyword.lower() in obj['feature'].lower()]
-
-    if filtered_objects == []:
-        raise Http404("Объект не найден")
-
-    response = {'data': filtered_objects[0]}
-
-    return render(request, 'rent_calculation.html', response)
+    return render(request, 'rent_details.html', response)
