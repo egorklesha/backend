@@ -13,7 +13,11 @@
                 <p>Описание: {{ data.describe }}</p>
             {% endif %}
 
-            <a class="return-link" href="{% url 'rents' %}">Назад</a>
+            <a class="return_link" href="{% url 'rents' %}">
+                <button class="btn fill">
+                    Назад
+                </button>
+            </a>
         </div>
     </div>
 
