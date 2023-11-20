@@ -1,7 +1,21 @@
-Django==4.2.4
+ Django==4.2.4
 django-browser-reload==1.11.0
 django-sass-processor==1.2.2
 libsass==0.22.0
 Pillow==9.4.0
 pillow-heif==0.10.0
 psycopg2==2.9.7
+
+python manage.py makemigrations
+python manage.py migrate
+python manage.py createsuperuser
+
+http://127.0.0.1:8000/admin/
+
+Indicator - показатель
+Estimate - рассчет
+
+index отвечает за главную страницу сайта
+indicator_details - за информацию о показателе
+indicator_delete - за удаление показателя
+

@@ -23,6 +23,8 @@ def indicator_details(request, indicator_id):
     return render(request, "indicator_page.html", context)
 
 
+# Которая по id находит показатель и вызывает его метод delete
+# В методе delete отправляешь sql запрос на обновление статуса
 def indicator_delete(request, indicator_id):
     indicator = Indicator.objects.get(id=indicator_id)
     indicator.delete()

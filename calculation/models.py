@@ -30,6 +30,7 @@ class Indicator(models.Model):
     def get_delete_url(self):
         return reverse("indicator_delete", kwargs={"indicator_id": self.id})
 
+   # Код показать в коде как обновляешь статус - update
     def delete(self):
         with connection.cursor() as cursor:
             cursor.execute("UPDATE calculation_indicator SET status = 2 WHERE id = %s", [self.pk])
