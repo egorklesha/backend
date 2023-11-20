@@ -63,13 +63,13 @@ database = [
 # Фильтрация
 def RentsListPage(request):
     # Преобразовать ключевое слово в строку для поиска в базе данных
-    filter_keyword = request.GET.get('filter_keyword', '')
+    communal_services = request.GET.get('communal_services', '')
 
-    filtered_objects = [obj for obj in database if filter_keyword.lower() in obj['feature'].lower()]
+    filtered_objects = [obj for obj in database if communal_services.lower() in obj['feature'].lower()]
 
     response = {
         'data': filtered_objects,
-        "filter_keyword": filter_keyword
+        "communal_services": communal_services
     }
 
     return render(request, 'rents_list.html', response)
