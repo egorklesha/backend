@@ -60,9 +60,9 @@ database = [
     }
 ]
 
-# Фильтрация
+# Фильтрация = communal_services
 def RentsListPage(request):
-    # Преобразовать ключевое слово в строку для поиска в базе данных
+    # Преобразовать ключевое слово в строку для поиска в базе данных например, filter_keyword = communal_services
     communal_services = request.GET.get('communal_services', '')
 
     filtered_objects = [obj for obj in database if communal_services.lower() in obj['feature'].lower()]
