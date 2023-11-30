@@ -1,14 +1,23 @@
 from django.urls import path
-
 from .views import *
 
 urlpatterns = [
-    # index отвечает за главную страницу сайта
-    path('', index, name="home"),
-    path('thematics/<int:indicator_id>', indicator_details, name="indicator_details"),
-    # indicator_details - за информацию о показателе
-    # Когда нажимаешь на кнопку "удалить" на карточке отправляется запрос на url thematic/id/delete
-    # Вызывается вьюха indicator_delete
-    path('thematics/<int:indicator_id>/delete/', indicator_delete, name="indicator_delete")
-    # indicator_delete - за удаление показателя
+    # Набор методов для услуг
+    path('api/indicators/search/', search_indicators),  # GET
+    path('api/indicators/<int:indicator_id>/', get_indicator_by_id),  # GET
+    path('api/indicators/<int:indicator_id>/image/', get_indicator_image),  # GET
+    path('api/indicators/<int:indicator_id>/update/', update_indicator),  # PUT
+    path('api/indicators/<int:indicator_id>/update_image/', update_indicator_image),  # PUT
+    path('api/indicators/<int:indicator_id>/delete/', delete_indicator),  # DELETE
+    path('api/indicators/create/', create_indicator),  # POST
+    path('api/indicators/<int:indicator_id>/add_to_estimate/', add_indicator_to_estimate),  # POST
+
+    # Набор методов для заявок
+    path('api/estimates/', get_estimates),  # GET
+    path('api/estimates/<int:estimate_id>/', get_estimate_by_id),  # GET
+    path('api/estimates/<int:estimate_id>/update/', update_estimate),  # PUT
+    path('api/estimates/<int:estimate_id>/update_status_user/', update_status_user),  # PUT
+    path('api/estimates/<int:estimate_id>/update_status_admin/', update_status_admin),  # PUT
+    path('api/estimates/<int:estimate_id>/delete/', delete_estimate),  # DELETE
+    path('api/estimates/<int:estimate_id>/delete_indicator/<int:indicator_id>/', delete_indicator_from_estimate),  # DELETE
 ]

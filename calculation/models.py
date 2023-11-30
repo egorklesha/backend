@@ -1,7 +1,6 @@
 from datetime import datetime
-from django.db import models, connection
+from django.db import models
 
-from django.urls import reverse
 from django.utils import timezone
 
 
@@ -24,17 +23,6 @@ class Indicator(models.Model):
         verbose_name = "Показатель"
         verbose_name_plural = "Показатели"
 
-    def get_absolute_url(self):
-        return reverse("indicator_details", kwargs={"indicator_id": self.id})
-
-    def get_delete_url(self):
-        return reverse("indicator_delete", kwargs={"indicator_id": self.id})
-
-   # Код показать в коде как обновляешь статус - update
-    def delete(self):
-        with connection.cursor() as cursor:
-            cursor.execute("UPDATE calculation_indicator SET status = 2 WHERE id = %s", [self.pk])
-
 
 class Estimate(models.Model):
     STATUS_CHOICES = (
@@ -47,6 +35,8 @@ class Estimate(models.Model):
 
     value = models.IntegerField(default=10, verbose_name="Количество")
     apartment = models.IntegerField(default=255, verbose_name="Номер квартиры")
+
+    indicators = models.ManyToManyField(Indicator, verbose_name="Показатели", null=True)
 
     status = models.IntegerField(max_length=100, choices=STATUS_CHOICES, default=1, verbose_name="Статус")
     date_created = models.DateTimeField(default=datetime.now(tz=timezone.utc), verbose_name="Дата создания")
