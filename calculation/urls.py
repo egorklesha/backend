@@ -13,11 +13,12 @@ urlpatterns = [
     path('api/indicators/<int:indicator_id>/add_to_estimate/', add_indicator_to_estimate),  # POST
 
     # Набор методов для заявок
-    path('api/estimates/', get_estimates),  # GET
+    path('api/estimates/', search_estimates),  # GET
     path('api/estimates/<int:estimate_id>/', get_estimate_by_id),  # GET
     path('api/estimates/<int:estimate_id>/update/', update_estimate),  # PUT
     path('api/estimates/<int:estimate_id>/update_status_user/', update_status_user),  # PUT
     path('api/estimates/<int:estimate_id>/update_status_admin/', update_status_admin),  # PUT
     path('api/estimates/<int:estimate_id>/delete/', delete_estimate),  # DELETE
     path('api/estimates/<int:estimate_id>/delete_indicator/<int:indicator_id>/', delete_indicator_from_estimate),  # DELETE
+    path('api/estimates/<int:estimate_id>/update_indicator/<int:indicator_id>/', update_estimate_indicator),  # PUT
 ]

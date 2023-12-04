@@ -58,7 +58,6 @@ TEMPLATES = [
     },
 ]
 
-
 # Проксирование
 CORS_ALLOWED_ORIGINS = [
     # Frontend

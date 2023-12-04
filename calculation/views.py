@@ -6,25 +6,28 @@ from rest_framework.response import Response
 from .serializers import *
 
 
+def get_draft_estimate():
+    estimate = Estimate.objects.filter(status=1).first()
+
+    if estimate is None:
+        return None
+
+    return estimate
+
+
 @api_view(["GET"])
 def search_indicators(request):
-    def get_draft_estimate_id():
-        vacancy = Estimate.objects.filter(status=1).first()
-
-        if vacancy is None:
-            return None
-
-        return vacancy.pk
-
     query = request.GET.get("query", "")
 
     indicators = Indicator.objects.filter(status=1).filter(name__icontains=query)
 
     serializer = IndicatorSerializer(indicators, many=True)
 
+    draft_estimate = get_draft_estimate()
+
     resp = {
         "indicators": serializer.data,
-        "draft_estimate": get_draft_estimate_id()
+        "draft_estimate": draft_estimate.pk if draft_estimate else None
     }
 
     return Response(resp)
@@ -71,7 +74,7 @@ def delete_indicator(request, indicator_id):
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     indicator = Indicator.objects.get(pk=indicator_id)
-    indicator.status = 2
+    indicator.status = 5
     indicator.save()
 
     indicators = Indicator.objects.filter(status=1)
@@ -87,17 +90,22 @@ def add_indicator_to_estimate(request, indicator_id):
 
     indicator = Indicator.objects.get(pk=indicator_id)
 
-    estimate = Estimate.objects.filter(status=1).last()
+    draft_estimate = get_draft_estimate()
 
-    if estimate is None:
-        estimate = Estimate.objects.create()
+    if draft_estimate is None:
+        draft_estimate = Estimate.objects.create()
 
-    estimate.indicators.add(indicator)
-    estimate.save()
+    if IndicatorEstimate.objects.filter(estimate=draft_estimate, indicator=indicator).exists():
+        return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
-    serializer = IndicatorSerializer(estimate.indicators, many=True)
+    cons = IndicatorEstimate.objects.create()
+    cons.estimate = draft_estimate
+    cons.indicator = indicator
+    cons.save()
 
-    return Response(serializer.data)
+    serializer = EstimateSerializer(draft_estimate, many=False)
+
+    return Response(serializer.data["indicators"])
 
 
 @api_view(["GET"])
@@ -125,8 +133,24 @@ def update_indicator_image(request, indicator_id):
 
 
 @api_view(["GET"])
-def get_estimates(request):
+def search_estimates(request):
+    status_id = int(request.GET.get("status", -1))
+    date_start = request.GET.get("date_start", None)
+    date_end = request.GET.get("date_end", None)
+
     estimates = Estimate.objects.all()
+
+    if status_id != -1:
+        estimates = estimates.filter(status=status_id)
+
+    if date_start:
+        # date_start = datetime.date()
+        estimates = estimates.filter(date_of_formation__gt=date_start)
+
+    if date_end:
+        # date_end = datetime.fromtimestamp(date_end).date()
+        estimates = estimates.filter(date_of_formation__lt=date_end)
+        
     serializer = EstimateSerializer(estimates, many=True)
 
     return Response(serializer.data)
@@ -171,6 +195,7 @@ def update_status_user(request, estimate_id):
         return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
     estimate.status = 2
+    estimate.date_of_formation = datetime.now(tz=timezone.utc)
     estimate.save()
 
     serializer = EstimateSerializer(estimate, many=False)
@@ -193,6 +218,7 @@ def update_status_admin(request, estimate_id):
     if estimate.status != 2:
         return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
+    estimate.date_complete = datetime.now(tz=timezone.utc)
     estimate.status = request_status
     estimate.save()
 
@@ -219,17 +245,29 @@ def delete_estimate(request, estimate_id):
 
 @api_view(["DELETE"])
 def delete_indicator_from_estimate(request, estimate_id, indicator_id):
-    if not Estimate.objects.filter(pk=estimate_id).exists():
+    if not IndicatorEstimate.objects.filter(indicator_id=indicator_id, estimate_id=estimate_id).exists():
         return Response(status=status.HTTP_404_NOT_FOUND)
 
-    if not Indicator.objects.filter(pk=indicator_id).exists():
-        return Response(status=status.HTTP_404_NOT_FOUND)
+    item = IndicatorEstimate.objects.get(indicator_id=indicator_id, estimate_id=estimate_id)
+    item.delete()
 
     estimate = Estimate.objects.get(pk=estimate_id)
-    estimate.indicators.remove(Indicator.objects.get(pk=indicator_id))
-    estimate.save()
 
-    serializer = IndicatorSerializer(estimate.indicators, many=True)
+    serializer = EstimateSerializer(estimate, many=False)
+
+    return Response(serializer.data["indicators"])
+
+
+@api_view(["DELETE"])
+def update_estimate_indicator(request,  estimate_id, indicator_id):
+    if not IndicatorEstimate.objects.filter(indicator_id=indicator_id, estimate_id=estimate_id).exists():
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    item = IndicatorEstimate.objects.get(indicator_id=indicator_id, estimate_id=estimate_id)
+
+    serializer = IndicatorEstimateSerializer(item, data=request.data, many=False, partial=True)
+
+    if serializer.is_valid():
+        serializer.save()
 
     return Response(serializer.data)
-

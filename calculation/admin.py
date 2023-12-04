@@ -4,3 +4,4 @@ from .models import *
 
 admin.site.register(Indicator)
 admin.site.register(Estimate)
+admin.site.register(IndicatorEstimate)
