@@ -5,20 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5c537fe1-01f4-480a-9380-4d460b2ddffd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/backend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/backend.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/calculation/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/calculation/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/calculation/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/calculation/migrations/0002_alter_estimate_date_complete_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/calculation/migrations/0003_alter_estimate_date_complete_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/calculation/migrations/0004_alter_estimate_date_complete_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/calculation/migrations/0005_alter_estimate_date_complete_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/calculation/migrations/0006_alter_estimate_date_complete_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/calculation/migrations/0007_alter_estimate_date_complete_and_more.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/calculation/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/calculation/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/calculation/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/calculation/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/calculation/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/calculation/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/calculation/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/calculation/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rent/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/rent/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/start/.minio.sys/buckets/.bloomcycle.bin/xl.meta" beforeDir="false" afterPath="$PROJECT_DIR$/start/.minio.sys/buckets/.bloomcycle.bin/xl.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/start/.minio.sys/buckets/.usage-cache.bin.bkp/xl.meta" beforeDir="false" afterPath="$PROJECT_DIR$/start/.minio.sys/buckets/.usage-cache.bin.bkp/xl.meta" afterDir="false" />
@@ -26,7 +15,10 @@
       <change beforePath="$PROJECT_DIR$/start/.minio.sys/buckets/.usage.json/xl.meta" beforeDir="false" afterPath="$PROJECT_DIR$/start/.minio.sys/buckets/.usage.json/xl.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/start/.minio.sys/buckets/images/.usage-cache.bin.bkp/xl.meta" beforeDir="false" afterPath="$PROJECT_DIR$/start/.minio.sys/buckets/images/.usage-cache.bin.bkp/xl.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/start/.minio.sys/buckets/images/.usage-cache.bin/xl.meta" beforeDir="false" afterPath="$PROJECT_DIR$/start/.minio.sys/buckets/images/.usage-cache.bin/xl.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/start/.minio.sys/tmp/0af3c7fe-e600-41ed-9b08-c27df3394a31" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/start/.minio.sys/config/iam/sts/XFQBKCIVY7ZEOX307DDC/identity.json/xl.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/start/.minio.sys/config/iam/sts/YC1KQM4CKKONHKU0MUM2/identity.json/xl.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/start/.minio.sys/config/iam/sts/ZNMTLKXHA3Z9PZKKRMQ6/identity.json/xl.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/start/.minio.sys/tmp/b3686605-0dae-45de-b1b4-ea16427b70b1" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,7 +185,33 @@
       <workItem from="1701332182087" duration="482000" />
       <workItem from="1701336884148" duration="554000" />
       <workItem from="1701690713884" duration="31000" />
-      <workItem from="1701691753065" duration="2132000" />
+      <workItem from="1701691753065" duration="2752000" />
+      <workItem from="1701721691828" duration="228000" />
+      <workItem from="1701774603141" duration="2598000" />
+      <workItem from="1701792574071" duration="904000" />
+      <workItem from="1701860237320" duration="2784000" />
+      <workItem from="1701939808645" duration="4000" />
+      <workItem from="1702063781032" duration="12000" />
+      <workItem from="1702889448577" duration="16000" />
+      <workItem from="1702889719689" duration="459000" />
+      <workItem from="1702890247378" duration="2337000" />
+      <workItem from="1702893515852" duration="644000" />
+      <workItem from="1702894370609" duration="1807000" />
+      <workItem from="1702896675159" duration="1504000" />
+      <workItem from="1702898385108" duration="624000" />
+      <workItem from="1702899621328" duration="14000" />
+      <workItem from="1702899648488" duration="2169000" />
+      <workItem from="1702902103541" duration="632000" />
+      <workItem from="1702905974614" duration="1824000" />
+      <workItem from="1702908807252" duration="26000" />
+      <workItem from="1702997747891" duration="4803000" />
+      <workItem from="1703006565758" duration="90000" />
+      <workItem from="1703014291307" duration="5726000" />
+      <workItem from="1703067125287" duration="224000" />
+      <workItem from="1703070205531" duration="1116000" />
+      <workItem from="1703071328392" duration="1337000" />
+      <workItem from="1703599420002" duration="510000" />
+      <workItem from="1703608542765" duration="15000" />
     </task>
     <servers />
   </component>
@@ -222,16 +240,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/calculation/views.py</url>
-          <line>145</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

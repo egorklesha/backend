@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, date
 # Модель юзера джанговская
 from django.contrib.auth.models import User
 from django.db import models
@@ -40,7 +40,7 @@ class Estimate(models.Model):
     apartment = models.IntegerField(default=255, verbose_name="Номер квартиры")
 
     status = models.IntegerField(max_length=100, choices=STATUS_CHOICES, default=1, verbose_name="Статус")
-    date_estimate = models.DateTimeField(default=datetime.now(tz=timezone.utc), verbose_name="Дата расчета")
+    date_estimate = models.DateField(default=date.today(), verbose_name="Дата расчета")
     date_created = models.DateTimeField(default=datetime.now(tz=timezone.utc), verbose_name="Дата создания")
     date_of_formation = models.DateTimeField(verbose_name="Дата формирования", blank=True, null=True)
     date_complete = models.DateTimeField(verbose_name="Дата завершения", blank=True, null=True)

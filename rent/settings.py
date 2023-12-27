@@ -13,7 +13,7 @@ SECRET_KEY = 'django-insecure-5^ye^vg(%58uhxrz#n=%8b59x!-kqc3o2-0ti8hr(7ecf!o=52
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '192.168.1.176']
 
 
 # Application definition
@@ -62,9 +62,11 @@ TEMPLATES = [
 CORS_ALLOWED_ORIGINS = [
     # Frontend
     "http://localhost:5173",
+    "http://192.168.1.176:5173",
     "http://127.0.0.1:5173",
     # Backend
     "http://localhost:8000",
+    "http://192.168.1.176:8000",
     "http://127.0.0.1:8000",
 ]
 
@@ -85,9 +87,10 @@ CORS_ALLOW_HEADERS = [
     "user-agent",
     "x-csrftoken",
     "x-requested-with",
+    "Authorization",
+    "Content-Type"
 ]
 
-CORS_ALLOW_CREDENTIALS = True
 
 WSGI_APPLICATION = 'rent.wsgi.application'
 
@@ -146,22 +149,13 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
-]
-
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 
-CORS_ALLOW_HEADERS = [
-    "Authorization",
-    "Content-Type"
-]
-
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_STORAGE_BUCKET_NAME = 'images'
-AWS_ACCESS_KEY_ID = 'xdHGJSXu6p2U4hoMboj0'
-AWS_SECRET_ACCESS_KEY = 'GB8cOeUObU4tztTtuNOCdCqrMuMCP1jRWnlHSJdu'
-AWS_S3_ENDPOINT_URL = 'http://127.0.0.1:9000'
+AWS_ACCESS_KEY_ID = 'XJKjF5Pu6L55PwSXCmkk'
+AWS_SECRET_ACCESS_KEY = 'W8tstnUmQq3pre4b2GHnCqS6jGgtzpeJPl8BXBPc'
+AWS_S3_ENDPOINT_URL = 'http://192.168.1.176:9000'
 
 
